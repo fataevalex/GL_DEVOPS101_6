@@ -29,19 +29,24 @@ pipeline {
     }
     stages {
         stage("test") {
+            when {
+                expression { return !params.SKIP_TESTS }
+            }
             steps {
-                if (SKIP_TESTS) {sh "make test"}
+                sh "make test"
             }
 
         }
         stage("lint") {
-            steps {
-                if (SKIP_LINT) {sh "make lint"}
+            when {
+                expression { return !params.SKIP_LINT }
             }
-
+            steps {
+                sh "make lint"
+            }
         }
         stage("build") {
-            steps {sh "make lint"}
+            steps { sh "make lint" }
         }
 
     }
