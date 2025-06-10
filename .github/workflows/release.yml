@@ -83,4 +83,4 @@ jobs:
 
       - name: Push Helm chart
         run: |
-          helm push ${CHART_PATH} oci://${{ env.REGISTRY }}/${{ github.repository }}/charts
+          helm push ${CHART_PATH} oci://${{ env.REGISTRY }}/${{ github.repository_owner }}/charts
