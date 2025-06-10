@@ -25,6 +25,8 @@ pipeline {
     }
     stages {
         stage("build") {
+            env.TARGETOS = env.TARGETOS
+            env.TARGETARCH= env.ARCH
             sh "make build"
         }
     }
