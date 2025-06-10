@@ -23,4 +23,9 @@ pipeline {
                 description: 'Skip running linter'
         )
     }
+    stages {
+        stage("build") {
+            sh "make build"
+        }
+    }
 }
