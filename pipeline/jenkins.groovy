@@ -23,11 +23,26 @@ pipeline {
                 description: 'Skip running linter'
         )
     }
+    environment {
+        TARGETOS = "${env.OS}"
+        TARGETARCH= "${ARCH}"
+    }
     stages {
-        stage("build") {
-            env.TARGETOS = env.TARGETOS
-            env.TARGETARCH= env.ARCH
-            sh "make build"
+        stage("test") {
+            steps {
+                if (SKIP_TESTS) {sh "make test"}
+            }
+
         }
+        stage("lint") {
+            steps {
+                if (SKIP_LINT) {sh "make lint"}
+            }
+
+        }
+        stage("build") {
+            steps {sh "make lint"}
+        }
+
     }
 }
