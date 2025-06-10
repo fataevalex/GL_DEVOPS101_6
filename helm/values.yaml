@@ -1,5 +1,5 @@
 image:
-  repository: ghcr.io/den-vasyliev/kbot-src
+  repository: ghcr.io/fataevalex/GL_DEVOPS101_6
   tag: ""
   pullPolicy: IfNotPresent
 nameOverride: ""
