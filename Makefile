@@ -3,7 +3,7 @@
 all:  image push
 
 APP=$(shell basename $(shell git remote get-url origin | tr '[:upper:]' '[:lower:]'))
-REGESTRY=fataevalex
+REGESTRY=ghcr.io/fataevalex
 REPO=github.com/fataevalex/gl_devops101_6
 CURRENTARCH=$(shell  shell go env GOARCH)
 VERSION=$(shell git describe --tags --abbrev=0 || echo "v1.0.0")-$(shell git rev-parse HEAD|cut -c1-7)
