@@ -1,0 +1,31 @@
+image:
+  repository: ghcr.io/den-vasyliev/kbot-src
+  tag: ""
+  pullPolicy: IfNotPresent
+nameOverride: ""
+fullnameOverride: ""
+app:
+  name: kbot
+  port: 8080
+service:
+  type: ClusterIP
+  port: 8080
+gateway:
+  hostname: "kbot.example.com"
+  parentGateway: "eg"
+  weight: 1
+  path: /
+
+dns:
+  nameservers:
+    - "1.1.1.1"
+secretName: kbot
+telegramTokenKey: token
+
+filters:
+  filters:
+  - type: URLRewrite
+    urlRewrite:
+      path:
+        replacePrefixMatch: /
+        type: ReplacePrefixMatch
